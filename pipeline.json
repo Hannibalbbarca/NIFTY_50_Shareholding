@@ -25,8 +25,10 @@
     "daily_check_time": "08:30",
     "existing_raw_task": "NiftyBSEShareholdingDaily",
     "schedule_policy": "Integrate or replace the existing task after approval; do not duplicate collectors",
-    "runner": "Cloud runner after a successful exchange-access test; otherwise existing Windows PC",
-    "storage": "Private storage; provider/account and billing settings require approval",
+    "runner": "Existing Windows PC; GitHub-hosted BSE probe returned HTTP 403 on 2026-10-28",
+    "cloud_collection_ready": false,
+    "storage": "Original-file archive remains on the existing PC; no new storage service",
+    "archive_location_approved": "existing_pc",
     "website": "Existing owner-private Nifty Ownership Explorer",
     "site_project_id": null,
     "github_repository": "Hannibalbbarca/NIFTY_50_Shareholding"

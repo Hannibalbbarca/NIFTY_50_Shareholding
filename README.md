@@ -9,9 +9,15 @@ The offline integration controller is implemented and tested. It preserves missi
 Two GitHub workflows are provided:
 
 - **Pipeline tests:** runs the offline Python and JavaScript tests on pushes and pull requests. All test data is synthetic.
-- **Read-only cloud source check:** checks ordinary browser access to official NSE/BSE sources on changes to the probe, or manually from Actions. It makes at most six explicit source checks (normal page subresource requests are additional), uses no secrets, and publishes only status/schema diagnostics. A blocked source fails the check and keeps cloud collection unapproved. It does not retry access denials, collect the archive or update the website.
+- **Read-only cloud source check:** a manual Actions check of ordinary browser access to official NSE/BSE sources. It makes at most six explicit source checks (normal page subresource requests are additional), uses no secrets, and publishes only status/schema diagnostics. A blocked source fails the check and keeps cloud collection unapproved. It does not retry access denials, collect the archive or update the website.
 
 There is **no recurring collection workflow yet**. Actual source data, browser profiles, generated datasets, local reports, credentials and the private Site configuration are excluded from this public repository.
+
+### Cloud test result and chosen collection route
+
+The initial GitHub-hosted check on 28 October 2026 installed and launched Chromium successfully. NSE navigation failed with `ERR_HTTP2_PROTOCOL_ERROR`; BSE returned **HTTP 403**. The check stopped rather than attempting a bypass. [Initial source-check run](https://github.com/Hannibalbbarca/NIFTY_50_Shareholding/actions/runs/40632512245).
+
+Use the **existing Windows PC for exchange collection**. The owner selected keeping the original-file archive on that PC, with **no new storage service**. GitHub holds and tests the code; the existing website remains separately owner-private. The probe is now manual-only, so source denials do not trigger repeated automatic attempts. The PC-to-private-Site update path is still to be connected.
 
 ## Run the tests
 
