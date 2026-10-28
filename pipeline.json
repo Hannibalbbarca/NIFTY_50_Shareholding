@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "scope": {
+    "index": "NIFTY 50",
+    "first_quarter_end": "2016-12-31",
+    "expected_members_per_quarter": 50,
+    "ownership_groups": 12,
+    "cash_market_fii_dii": false
+  },
+  "calculation": {
+    "weight_basis": "full_ordinary_fully_paid_market_cap",
+    "incomplete_quarters": "rescale_available_company_weights_and_label_estimate",
+    "missing_observations": "preserve_missing_never_zero_fill",
+    "classification_policy": "existing_v0_pending_review"
+  },
+  "activation": {
+    "user_approved": true,
+    "read_only_cloud_probe_approved": true,
+    "network_collection_enabled": false,
+    "remote_writes_enabled": false,
+    "new_schedule_enabled": false
+  },
+  "proposed_operation": {
+    "timezone": "Asia/Kolkata",
+    "daily_check_time": "08:30",
+    "existing_raw_task": "NiftyBSEShareholdingDaily",
+    "schedule_policy": "Integrate or replace the existing task after approval; do not duplicate collectors",
+    "runner": "Cloud runner after a successful exchange-access test; otherwise existing Windows PC",
+    "storage": "Private storage; provider/account and billing settings require approval",
+    "website": "Existing owner-private Nifty Ownership Explorer",
+    "site_project_id": null,
+    "github_repository": "Hannibalbbarca/NIFTY_50_Shareholding"
+  }
+}

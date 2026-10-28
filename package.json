@@ -1,0 +1,12 @@
+{
+  "name": "nifty50-shareholding-pipeline",
+  "version": "0.2.0",
+  "private": true,
+  "description": "Ownership integration and bounded ordinary-browser source checks; no AI calls",
+  "scripts": {
+    "test": "node --test test_source_probe.cjs",
+    "probe": "node tools/source_probe.cjs"
+  },
+  "engines": {"node": ">=22"},
+  "dependencies": {"playwright": "1.62.1"}
+}

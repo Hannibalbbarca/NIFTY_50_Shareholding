@@ -1,0 +1,41 @@
+name: Read-only cloud source check
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/cloud-source-probe.yml'
+      - 'tools/source_probe.cjs'
+      - 'package.json'
+      - 'package-lock.json'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: exchange-source-probe
+  cancel-in-progress: false
+jobs:
+  probe:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
+        with:
+          node-version: '24'
+          package-manager-cache: false
+      - name: Install pinned browser dependency
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Install ordinary Chromium with OS dependencies
+        run: npx playwright install --with-deps chromium
+      - name: Check official source access (no retries or publishing)
+        run: npm run probe
+      - name: Retain status-only report for seven days
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
+        with:
+          name: source-access-${{ github.run_id }}
+          path: reports/source-probe/
+          if-no-files-found: warn
+          retention-days: 7
