@@ -7,6 +7,14 @@
     "ownership_groups": 12,
     "cash_market_fii_dii": false
   },
+  "membership": {
+    "policy": "approved_core_50_companies_v1",
+    "resolution": ["official_exact_date_snapshot", "reviewed_event_reconstruction"],
+    "private_ledger": "data/membership/verified-ledger.json",
+    "baseline_coverage_through": "2026-10-08",
+    "automatic_notice_interpretation_enabled": false,
+    "unreviewed_history": "report_gap_preserve_existing_targets"
+  },
   "calculation": {
     "weight_basis": "full_ordinary_fully_paid_market_cap",
     "incomplete_quarters": "rescale_available_company_weights_and_label_estimate",

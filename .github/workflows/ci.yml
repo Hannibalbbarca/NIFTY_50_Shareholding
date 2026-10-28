@@ -25,6 +25,6 @@ jobs:
           node-version: '24'
           package-manager-cache: false
       - name: Offline integration tests
-        run: python -m unittest -v test_pipeline.py
+        run: python -m unittest -v test_pipeline.py test_membership_tracker.py
       - name: Source validation tests (no network)
         run: node --test test_source_probe.cjs

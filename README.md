@@ -6,6 +6,8 @@ Code for maintaining original shareholding filings, twelve-category company owne
 
 The offline integration controller is implemented and tested. It preserves missing values, validates company-quarter membership and category totals, builds a website-compatible candidate, records classification issues and reuses unchanged verified inputs. It does not publish data or create a schedule.
 
+The membership tracker now supports exact-date official CSV snapshots and reconstruction from a reviewed effective-dated event ledger. The approved workbook baseline independently replays 28 membership periods and matches all 2,000 targets in the selected 40-quarter plan. Its history ends on 8 October 2026; unreviewed dates are reported as gaps. A backed-up installer connects this adapter to the existing PC collector without adding a schedule. See [membership method and limits](docs/MEMBERSHIP.md).
+
 Two GitHub workflows are provided:
 
 - **Pipeline tests:** runs the offline Python and JavaScript tests on pushes and pull requests. All test data is synthetic.
@@ -24,7 +26,7 @@ Use the **existing Windows PC for exchange collection**. The owner selected keep
 Python 3.11+ and Node 22+:
 
 ```sh
-python -m unittest -v test_pipeline.py
+python -m unittest -v test_pipeline.py test_membership_tracker.py
 node --test test_source_probe.cjs
 ```
 
@@ -61,10 +63,10 @@ The current v0 classification is retained for reproducibility and remains under 
 
 ## Next connection stages
 
-1. Verify the cloud source-check result and choose a cloud runner or the existing PC collector.
+1. Extend verified index-change history as new notices arrive; exact-date snapshots remain the first membership source.
 2. Finalize the reviewed classification policy and the incremental source-to-input adapter.
-3. Connect approved private persistent storage and a portable Excel renderer.
+3. Connect the existing PC archive to a portable Excel renderer.
 4. Connect an authenticated updater for the existing owner-private chart.
-5. Verify a complete live update and failure recovery; integrate a single daily schedule.
+5. Verify a complete live update and failure recovery within the existing daily schedule.
 
 Routine processing and chart use require no AI calls. No paid plans, custom domains or billable storage have been configured by these workflows.
